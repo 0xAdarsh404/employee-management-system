@@ -17,18 +17,25 @@ app.get("/api/health", (req, res) => {
   res.status(200).json({ success: true, message: "Employee Management API is running" });
 });
 
+app.use(async (req, res, next) => {
+  try {
+    await connectDB();
+    next();
+  } catch (error) {
+    next(error);
+  }
+});
+
 app.use("/api/employees", employeeRoutes);
 
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 
-const startServer = async () => {
-  await connectDB();
-
+if (!process.env.VERCEL) {
   app.listen(PORT, () => {
     console.log(`Server running in ${process.env.NODE_ENV || "development"} mode on port ${PORT}`);
   });
-};
+}
 
-startServer();
+export default app;

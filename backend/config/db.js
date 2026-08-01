@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
 
+let connectionPromise = null;
+
 const connectDB = async () => {
   try {
     const mongoUri = process.env.MONGO_URI || process.env.MONGODB_URI;
@@ -8,7 +10,18 @@ const connectDB = async () => {
       throw new Error("Missing MongoDB connection string. Set MONGO_URI or MONGODB_URI.");
     }
 
-    const conn = await mongoose.connect(mongoUri);
+    if (mongoose.connection.readyState === 1) {
+      return mongoose.connection;
+    }
+
+    if (!connectionPromise) {
+      connectionPromise = mongoose.connect(mongoUri).catch((error) => {
+        connectionPromise = null;
+        throw error;
+      });
+    }
+
+    const conn = await connectionPromise;
 
     console.log("✅ MongoDB Connected");
     console.log(`Host: ${conn.connection.host}`);
