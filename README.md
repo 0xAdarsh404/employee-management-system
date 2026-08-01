@@ -5,7 +5,7 @@ A full-stack Employee Management System built with **MongoDB**, **Express.js**, 
 ## Tech Stack
 
 | Layer      | Technology                          |
-| ---------- | ----------------------------------- |
+| ---------- | ------------------------------------ |
 | Frontend   | React.js, Vite, Axios               |
 | Backend    | Node.js, Express.js                 |
 | Database   | MongoDB, Mongoose                   |
@@ -99,6 +99,14 @@ Create a `.env` file in the `frontend` folder (optional — defaults work with p
 VITE_API_URL=http://localhost:5000/api
 ```
 
+Start the frontend:
+
+```bash
+npm run dev
+```
+
+The app will open at `http://localhost:3000`
+
 ## Vercel Deployment
 
 This repository includes both `frontend` and `backend`, so Vercel treats it as a multi-service project. A root `vercel.json` is included to deploy:
@@ -113,24 +121,16 @@ MONGO_URI=your_mongodb_atlas_connection_string
 NODE_ENV=production
 ```
 
-Start the frontend:
-
-```bash
-npm run dev
-```
-
-The app will open at `http://localhost:3000`
-
 ## API Endpoints
 
 | Method | Endpoint              | Description          |
-| ------ | --------------------- | -------------------- |
-| GET    | `/api/health`         | Health check         |
-| GET    | `/api/employees`      | Get all employees    |
-| GET    | `/api/employees/:id`  | Get employee by ID   |
-| POST   | `/api/employees`      | Create employee      |
-| PUT    | `/api/employees/:id`  | Update employee      |
-| DELETE | `/api/employees/:id`  | Delete employee      |
+| ------ | ---------------------- | --------------------- |
+| GET    | `/api/health`          | Health check          |
+| GET    | `/api/employees`       | Get all employees     |
+| GET    | `/api/employees/:id`   | Get employee by ID    |
+| POST   | `/api/employees`       | Create employee       |
+| PUT    | `/api/employees/:id`   | Update employee       |
+| DELETE | `/api/employees/:id`   | Delete employee       |
 
 ### Query Parameters (GET /api/employees)
 
