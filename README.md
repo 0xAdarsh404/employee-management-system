@@ -72,7 +72,7 @@ Create a `.env` file in the `backend` folder:
 
 ```env
 PORT=5000
-MONGODB_URI=mongodb://127.0.0.1:27017/employee_management
+MONGO_URI=mongodb://127.0.0.1:27017/employee_management
 NODE_ENV=development
 ```
 
@@ -97,6 +97,20 @@ Create a `.env` file in the `frontend` folder (optional — defaults work with p
 
 ```env
 VITE_API_URL=http://localhost:5000/api
+```
+
+## Vercel Deployment
+
+This repository includes both `frontend` and `backend`, so Vercel treats it as a multi-service project. A root `vercel.json` is included to deploy:
+
+- `frontend/` as the Vite app
+- `backend/` as the Express API
+
+Required environment variables in Vercel:
+
+```env
+MONGO_URI=your_mongodb_atlas_connection_string
+NODE_ENV=production
 ```
 
 Start the frontend:
