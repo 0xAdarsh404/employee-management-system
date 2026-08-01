@@ -1,0 +1,94 @@
+{
+  "info": {
+    "name": "Employee Management API",
+    "description": "Postman collection for Employee Management System REST API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000/api"
+    },
+    {
+      "key": "employeeId",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/health"
+      }
+    },
+    {
+      "name": "Get All Employees",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/employees?search=&department=&status=",
+          "host": ["{{baseUrl}}"],
+          "path": ["employees"],
+          "query": [
+            { "key": "search", "value": "" },
+            { "key": "department", "value": "" },
+            { "key": "status", "value": "" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Employee By ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/employees/{{employeeId}}"
+      }
+    },
+    {
+      "name": "Create Employee",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"email\": \"john.doe@company.com\",\n  \"phone\": \"+91 9876543210\",\n  \"department\": \"Engineering\",\n  \"position\": \"Software Engineer\",\n  \"salary\": 800000,\n  \"dateOfJoining\": \"2024-01-15\",\n  \"status\": \"active\"\n}"
+        },
+        "url": "{{baseUrl}}/employees"
+      }
+    },
+    {
+      "name": "Update Employee",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"email\": \"john.doe@company.com\",\n  \"phone\": \"+91 9876543210\",\n  \"department\": \"Engineering\",\n  \"position\": \"Senior Software Engineer\",\n  \"salary\": 950000,\n  \"dateOfJoining\": \"2024-01-15\",\n  \"status\": \"active\"\n}"
+        },
+        "url": "{{baseUrl}}/employees/{{employeeId}}"
+      }
+    },
+    {
+      "name": "Delete Employee",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": "{{baseUrl}}/employees/{{employeeId}}"
+      }
+    }
+  ]
+}

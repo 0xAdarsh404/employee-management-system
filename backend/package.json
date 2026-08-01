@@ -1,0 +1,27 @@
+{
+  "name": "employee-management-backend",
+  "version": "1.0.0",
+  "description": "Employee Management System - REST API",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [
+    "employee",
+    "management",
+    "mern",
+    "express",
+    "mongodb"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongodb": "^7.5.0",
+    "mongoose": "^8.24.2"
+  }
+}
